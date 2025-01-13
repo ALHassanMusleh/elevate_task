@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:elevate_task/data/model/product.dart';
 import 'package:elevate_task/utils/app_colors.dart';
 import 'package:elevate_task/utils/app_styles.dart';
@@ -23,10 +24,14 @@ class ProductItem extends StatelessWidget {
         children: [
           Column(
             children: [
-              Image.network(
-                product.image ?? '',
-                width: MediaQuery.of(context).size.width * 0.33,
-                height: MediaQuery.of(context).size.height * 0.19,
+              CachedNetworkImage(
+                imageUrl: product.image ?? '',
+                placeholder: (context, url) => const Center(
+                  child: CircularProgressIndicator(),
+                ),
+                errorWidget: (context, url, error) => const Icon(Icons.error),
+                width: MediaQuery.of(context).size.width * .33,
+                height: MediaQuery.of(context).size.height * .19,
               ),
               const SizedBox(
                 height: 10,
