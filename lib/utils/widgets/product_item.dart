@@ -1,10 +1,12 @@
+import 'package:elevate_task/data/model/product.dart';
 import 'package:elevate_task/utils/app_colors.dart';
 import 'package:elevate_task/utils/app_styles.dart';
 import 'package:flutter/material.dart';
 
 class ProductItem extends StatelessWidget {
-  const ProductItem({super.key});
+  const ProductItem({super.key, required this.product});
 
+  final Product product;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -13,7 +15,8 @@ class ProductItem extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 8),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(10),
-        border: Border.all(color: AppColors.secondary.withOpacity(0.6)),
+        border:
+            Border.all(color: AppColors.secondary.withOpacity(0.6), width: 1.5),
       ),
       child: Stack(
         alignment: Alignment.topRight,
@@ -21,7 +24,7 @@ class ProductItem extends StatelessWidget {
           Column(
             children: [
               Image.network(
-                'https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg',
+                product.image ?? '',
                 width: MediaQuery.of(context).size.width * 0.33,
                 height: MediaQuery.of(context).size.height * 0.19,
               ),
@@ -29,13 +32,13 @@ class ProductItem extends StatelessWidget {
                 height: 10,
               ),
               Text(
-                'Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops',
+                product.title ?? '',
                 maxLines: 1,
                 overflow: TextOverflow.ellipsis,
                 style: AppStyles.primaryTextStyle,
               ),
               Text(
-                'Your perfect pack for everyday use and walks in the forest. Stash your laptop (up to 15 inches) in the padded sleeve, your everyday',
+                product.description ?? '',
                 maxLines: 1,
                 overflow: TextOverflow.ellipsis,
                 style: AppStyles.primaryTextStyle,
@@ -46,7 +49,7 @@ class ProductItem extends StatelessWidget {
               Row(
                 children: [
                   Text(
-                    'EGP 109.95',
+                    'EGP ${product.price}',
                     maxLines: 1,
                     style: AppStyles.primaryTextStyle,
                   ),
@@ -69,7 +72,7 @@ class ProductItem extends StatelessWidget {
                   Row(
                     children: [
                       Text(
-                        'Review (4.6)',
+                        'Review (${product.rating?.rate})',
                         style: AppStyles.subTitleTextStyle,
                       ),
                       const Icon(
