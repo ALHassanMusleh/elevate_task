@@ -4,7 +4,9 @@ import 'package:elevate_task/data/repositories/product_repository/product_reposi
 import 'package:elevate_task/data/repositories/product_repository/product_repositry_impl.dart';
 import 'package:elevate_task/ui/base/base_api_state.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:injectable/injectable.dart';
 
+@injectable
 class ProductsViewModel extends Cubit<ProductsViewModelState> {
   ProductRepository productRepository;
   ProductsViewModel(this.productRepository)

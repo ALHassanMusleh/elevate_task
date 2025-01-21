@@ -1,6 +1,8 @@
 import 'package:elevate_task/data/model/product.dart';
 import 'package:elevate_task/data/repositories/product_repository/data_sources/products_offline_data_sources.dart';
+import 'package:injectable/injectable.dart';
 
+@Injectable(as: ProductsOfflineDataSource)
 class ProductsOfflineDataSourceImpl extends ProductsOfflineDataSource {
   @override
   Future<List<Product>> getProducts() async {

@@ -1,7 +1,10 @@
 import 'package:elevate_task/ui/screen/products_screen/products_screen.dart';
 import 'package:flutter/material.dart';
 
+import 'di/di.dart';
+
 void main() {
+  configureDependencies();
   runApp(const MyApp());
 }
 

@@ -2,6 +2,7 @@ import 'package:elevate_task/data/model/product.dart';
 import 'package:elevate_task/data/repositories/product_repository/data_sources/products_offline_data_sources_impl.dart';
 import 'package:elevate_task/data/repositories/product_repository/data_sources/products_remote_data_sources_impl.dart';
 import 'package:elevate_task/data/repositories/product_repository/product_repositry_impl.dart';
+import 'package:elevate_task/di/di.dart';
 import 'package:elevate_task/ui/base/base_api_state.dart';
 import 'package:elevate_task/ui/screen/products_screen/products_view_model.dart';
 import 'package:elevate_task/utils/widgets/error_view.dart';
@@ -9,6 +10,7 @@ import 'package:elevate_task/utils/widgets/loading_view.dart';
 import 'package:elevate_task/utils/widgets/product_item.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:internet_connection_checker/internet_connection_checker.dart';
 
 class ProductsScreen extends StatefulWidget {
   const ProductsScreen({super.key});
@@ -18,12 +20,7 @@ class ProductsScreen extends StatefulWidget {
 }
 
 class _ProductsScreenState extends State<ProductsScreen> {
-  ProductsViewModel productsViewModel = ProductsViewModel(
-    ProductRepositoryImpl(
-      offlineDataSource: ProductsOfflineDataSourceImpl(),
-      remoteDataSource: ProductsRemoteDataSourceImpl(),
-    ),
-  );
+  ProductsViewModel productsViewModel = getIt();
 
   @override
   void initState() {

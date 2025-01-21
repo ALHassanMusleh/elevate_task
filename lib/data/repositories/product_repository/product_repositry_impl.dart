@@ -4,8 +4,10 @@ import 'package:elevate_task/data/repositories/product_repository/data_sources/p
 import 'package:elevate_task/data/repositories/product_repository/data_sources/products_remote_data_sources.dart';
 import 'package:elevate_task/data/repositories/product_repository/data_sources/products_remote_data_sources_impl.dart';
 import 'package:elevate_task/data/repositories/product_repository/product_repositry.dart';
+import 'package:injectable/injectable.dart';
 import 'package:internet_connection_checker/internet_connection_checker.dart';
 
+@Injectable(as: ProductRepository)
 class ProductRepositoryImpl extends ProductRepository {
   ProductsRemoteDataSource remoteDataSource;
   ProductsOfflineDataSource offlineDataSource;
